@@ -34,10 +34,10 @@ def go(args):
     df.to_csv(filename, index=False)
 
     artifact = wandb.Artifact(
-        name=args.output_artifact,
-        type=args.output_type,
-        description=args.output_description,
-    )
+     args.output_artifact,
+     type=args.output_type,
+     description=args.output_description,
+     )
     artifact.add_file(filename)
 
     logger.info("Logging artifact")
