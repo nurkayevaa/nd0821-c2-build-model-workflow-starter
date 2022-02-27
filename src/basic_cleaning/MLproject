@@ -26,7 +26,7 @@ entry_points:
 
     command: >-
       python run.py --input_artifact {input_artifact} \
-                              --output_artifact {artifact_name} \
+                              --output_artifact {output_name} \
                               --output_type {artifact_type} \
                               --output_description {artifact_description} \
                               --min_price {max_price} \
