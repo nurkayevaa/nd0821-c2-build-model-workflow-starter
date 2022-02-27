@@ -25,6 +25,7 @@ def go(args):
 
     idx = df['price'].between(args.min_price, args.max_price)
     df = df[idx].copy()
+   
 
     filename = "clean_sample.csv"
     df.to_csv(filename)
