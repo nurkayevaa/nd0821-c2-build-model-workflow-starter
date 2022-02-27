@@ -13,7 +13,7 @@ logger = logging.getLogger()
 
 def go(args):
 
-    run = wandb.init(project="exercise_5", job_type="process_data")
+    run = wandb.init(project="nyc_airbnb", job_type="clean_data")
 
     logger.info("Downloading artifact")
     artifact = run.use_artifact(args.input_artifact)
