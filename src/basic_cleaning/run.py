@@ -30,16 +30,10 @@ def go(args):
     
     
     # Drop outliers
-    min_price = args.min_price
-    max_price = args.max_price
-    idx = df['price'].between(min_price, max_price)
-    df = df[idx].copy()
-    # Convert last_review to datetime
-    df['last_review'] = pd.to_datetime(df['last_review'])
-    
-    
-    
+
+   
     df.to_csv("clean_sample.csv", index=False)
+    
     artifact = wandb.Artifact(
              args.output_artifact,
              type=args.output_type,
