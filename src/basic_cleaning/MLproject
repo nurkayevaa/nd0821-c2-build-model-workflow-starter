@@ -6,23 +6,23 @@ entry_points:
     parameters:
 
       input_artifact:
-        description: ## ADD DESCRIPTION
+        description: Fully qualified name for the artifact
         type: string
 
        output_artifact:
-        description: ## ADD DESCRIPTION
+        description: Fully qualified name for the artifact
         type: string
 
        output_type:
-        description: ## ADD DESCRIPTION
+        description: Fully qualified name for the artifact
         type: string
 
        min_price:
-        description: ## ADD DESCRIPTION
+        description: Fully qualified name for the artifact
         type: float
 
        max_price:
-        description: ## ADD DESCRIPTION
+        description: Fully qualified name for the artifact
         type: float
 
 
