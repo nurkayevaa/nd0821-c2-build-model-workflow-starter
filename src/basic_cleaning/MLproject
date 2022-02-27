@@ -7,7 +7,7 @@ entry_points:
       input_artifact:
         description: Fully qualified name for the artifact
         type: str
-      output_name:
+      output_artifact:
         description: Name for the W&B artifact that will be created
         type: str
       output_type:
