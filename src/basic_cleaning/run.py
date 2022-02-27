@@ -22,7 +22,8 @@ def go(args):
     ######################
     # YOUR CODE HERE     #
     ######################
-    run = wandb.init(project="nyc_airbnb", group="eda", save_code=True)
+    
+    run = wandb.init(project="nyc_airbnb", save_code=True)
     artifact_local_path = run.use_artifact(args.input_artifact).file()
 
     df = pd.read_csv(artifact_local_path)
