@@ -13,17 +13,17 @@ entry_points:
         description: ## ADD DESCRIPTION
         type: string
 
-       output_file:
+       output_type:
         description: ## ADD DESCRIPTION
         type: string
 
        min_price:
         description: ## ADD DESCRIPTION
-        type: string
+        type: float
 
        max_price:
         description: ## ADD DESCRIPTION
-        type: string
+        type: float
 
 
     command: >-
