@@ -22,12 +22,18 @@ def go(args):
     ######################
     # YOUR CODE HERE     #
     ######################
-    
-    run = wandb.init(project="nyc_airbnb", save_code=True)
-    artifact_local_path = run.use_artifact(args.input_artifact).file()
+    run = wandb.init(project="nyc_airbnb", job_type="clean_data")
 
-    df = pd.read_csv(artifact_local_path)
-    
+    logger.info("Downloading artifact")
+    artifact = run.use_artifact(args.input_artifact)
+    artifact_path = artifact.file()
+
+    df = pd.read_parquet(artifact_path)
+
+    # Drop the duplicates
+    logger.info("Removing outliers")
+    # Drop outliers
+
     
     # Drop outliers
 
