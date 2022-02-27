@@ -17,11 +17,11 @@ entry_points:
       output_description:
         description: Description for the artifact
         type: str
-	min_price:
-        description: Description for the artifact
+  min_price:
+        description: min price for the artifact
         type: float
 	max_price:
-        description: Description for the artifact
+        description: min price for the artifact
         type: float
 
     command: >-
