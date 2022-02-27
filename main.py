@@ -67,7 +67,7 @@ def go(config: DictConfig):
             # Implement here #
             ##################
              _ = mlflow.run(
-                os.path.join(hydra.utils.get_original_cwd(), "src", "basic_cleaning"), 
+                os.path.join(hydra.utils.get_original_cwd(), "src", "data_check"), 
                 "main",
                 parameters={
                              "csv": "sample.csv:latest",
