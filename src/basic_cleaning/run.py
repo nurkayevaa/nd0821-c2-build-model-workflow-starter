@@ -28,7 +28,7 @@ def go(args):
     artifact = run.use_artifact(args.input_artifact)
     artifact_path = artifact.file()
 
-    df = pd.read_parquet(artifact_path)
+    df = pd.read_csv(artifact_path)
 
     # Drop the duplicates
     logger.info("Removing outliers")
