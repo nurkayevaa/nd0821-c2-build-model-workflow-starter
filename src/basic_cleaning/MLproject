@@ -1,4 +1,4 @@
-name: download_data
+name: basic_cleaning
 conda_env: conda.yml
 
 entry_points:
@@ -17,10 +17,10 @@ entry_points:
       output_description:
         description: Description for the artifact
         type: str
-  min_price:
+      min_price:
         description: min price for the artifact
         type: float
-  max_price:
+      max_price:
         description: min price for the artifact
         type: float
 
