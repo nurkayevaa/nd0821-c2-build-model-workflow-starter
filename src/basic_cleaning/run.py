@@ -22,24 +22,21 @@ def go(args):
     df = pd.read_parquet(artifact_path)
 
     # Drop the duplicates
-    logger.info("Dropping duplicates")
-    df = df.drop_duplicates().reset_index(drop=True)
+    logger.info("Removing outliers")
+    # Drop outliers
 
-    logger.info("Fixing missing values")
-    # These are missing values that are due to an old version of the data. On new data,
-    # because of a change in the web form used to register new songs, the title and the
-    # song name are already empty strings
-    df['title'].fillna(value='', inplace=True)
-    df['song_name'].fillna(value='', inplace=True)
-    df['text_feature'] = df['title'] + ' ' + df['song_name']
+    idx = df['price'].between(args.min_price, args.max_price)
+    df = df[idx].copy()
+    # Convert last_review to datetime
+    df['last_review'] = pd.to_datetime(df['last_review'])
 
-    filename = "processed_data.csv"
+    filename = "clean_sample.csv"
     df.to_csv(filename)
 
     artifact = wandb.Artifact(
-        name=args.artifact_name,
-        type=args.artifact_type,
-        description=args.artifact_description,
+        name=args.output_artifact,
+        type=args.output_type,
+        description=args.output_description,
     )
     artifact.add_file(filename)
 
