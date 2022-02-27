@@ -20,7 +20,7 @@ entry_points:
   min_price:
         description: min price for the artifact
         type: float
-	max_price:
+  max_price:
         description: min price for the artifact
         type: float
 
