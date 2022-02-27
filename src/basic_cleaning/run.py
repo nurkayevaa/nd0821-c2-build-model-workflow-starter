@@ -13,17 +13,15 @@ logger = logging.getLogger()
 
 def go(args):
 
-    run = wandb.init(project="nyc_airbnb", job_type="clean_data")
-
-    logger.info("Downloading artifact")
-    artifact = run.use_artifact(args.input_artifact)
-    artifact_path = artifact.file()
+    run = wandb.init(project="nyc_airbnb", group="eda", save_code=True)
+    local_path = wandb.use_artifact("sample.csv:latest").file()
+    df = pd.read_csv(local_path)
 
     df = pd.read_parquet(artifact_path)
 
-    # Drop the duplicates
+    # Remove outliers
     logger.info("Removing outliers")
-    # Drop outliers
+
 
     idx = df['price'].between(args.min_price, args.max_price)
     df = df[idx].copy()
@@ -31,13 +29,13 @@ def go(args):
     df['last_review'] = pd.to_datetime(df['last_review'])
 
     filename = "clean_sample.csv"
-    df.to_csv(filename, index=False)
+    df.to_csv(filename)
 
     artifact = wandb.Artifact(
-     args.output_artifact,
-     type=args.output_type,
-     description=args.output_description,
-     )
+        name=args.output_artifact,
+        type=args.output_type,
+        description=args.output_description,
+    )
     artifact.add_file(filename)
 
     logger.info("Logging artifact")
