@@ -43,6 +43,7 @@ def go(args):
 
     idx = df['price'].between(min_price, max_price)
     df = df[idx].copy()
+    df['last_review'] = pd.to_datetime(df['last_review'])
  
 
    
@@ -55,6 +56,8 @@ def go(args):
              )
     artifact.add_file("clean_sample.csv")
     run.log_artifact(artifact)
+    os.remove(args.output_artifact)
+    run.finish()
 
     
 
