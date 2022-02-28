@@ -26,21 +26,12 @@ def go(args):
     ######################
     run = wandb.init(project="nyc_airbnb", job_type="clean_data")
 
-    logger.info("Downloading artifact")
-    artifact = run.use_artifact(args.input_artifact)
-    artifact_path = artifact.file()
-
-    df = pd.read_csv(artifact_path)
 
     # Drop the duplicates
-    logger.info("Removing outliers")
+    logger.info("Dropping outliers")
     # Drop outliers
-
-    
-    # Drop outliers
-    # Drop outliers
-    min_price = 10# args.min_price
-    max_price = 350#args.max_price
+    min_price = args.min_price
+    max_price = args.max_price
 
     idx = df['price'].between(min_price, max_price)
     df = df[idx].copy()
@@ -48,19 +39,19 @@ def go(args):
     idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
     df = df[idx].copy()
  
-
-   
     df.to_csv(args.output_artifact, index=False)
-    
+
     artifact = wandb.Artifact(
-             args.output_artifact,
-             type=args.output_type,
-             description=args.output_description,
-             )
-    artifact.add_file("clean_sample.csv")
+        name=args.artifact_name,
+        type=args.artifact_type,
+        description=args.artifact_description,
+    )
+    artifact.add_file(filename)
+
+    logger.info("Logging artifact")
     run.log_artifact(artifact)
-    #os.remove(args.output_artifact)
-    #run.finish()
+
+    os.remove(filename)
 
     
 
