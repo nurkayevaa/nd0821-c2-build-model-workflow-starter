@@ -50,7 +50,7 @@ def go(args):
  
 
    
-    df.to_csv("clean_sample.csv", index=False)
+    df.to_csv(args.output_artifact, index=False)
     
     artifact = wandb.Artifact(
              args.output_artifact,
