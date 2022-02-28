@@ -40,8 +40,7 @@ def go(args):
     # Drop outliers
     min_price = args.min_price
     max_price = args.max_price
-    min_price = 10
-    max_price = 350
+
     idx = df['price'].between(min_price, max_price)
     df = df[idx].copy()
  
