@@ -21,7 +21,7 @@ entry_points:
         description: min price for the artifact
         type: float
       max_price:
-        description: min price for the artifact
+        description: max price for the artifact
         type: float
 
     command: >-
