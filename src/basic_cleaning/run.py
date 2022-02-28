@@ -47,7 +47,7 @@ def go(args):
     df.to_csv(filename)
 
     artifact = wandb.Artifact(
-        name=args.output_name,
+        name=args.output_artifact,
         type=args.output_type,
         description=args.output_description,
     )
