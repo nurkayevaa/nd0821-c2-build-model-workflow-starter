@@ -29,7 +29,7 @@ entry_points:
                               --output_artifact {output_artifact} \
                               --output_type {output_type} \
                               --output_description {output_description} \
-                              --min_price {max_price} \
+                              --min_price {min_price} \
                               --max_price {max_price} 
 
  
