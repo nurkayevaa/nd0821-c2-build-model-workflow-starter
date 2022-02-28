@@ -50,6 +50,7 @@ def go(args):
         type=args.output_type,
         description=args.output_description,
     )
+    filename = "clean_sample.csv"
     artifact.add_file(filename)
 
     logger.info("Logging artifact")
