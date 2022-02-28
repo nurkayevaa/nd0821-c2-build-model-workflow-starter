@@ -82,7 +82,16 @@ def go(config: DictConfig):
             ##################
             # Implement here #
             ##################
-            pass
+            _ = mlflow.run(
+                f"{config['main']['components_repository']}/train_val_test_split",
+                "main",
+                parameters={
+                    "input": "clean_sample.csv:latest",
+                    "test_size": config["modeling"]["test_size"],
+                    "random_seed": config["modeling"]["random_seed"],
+                    "stratify_by": config["modeling"]["stratify_by"]
+                },
+            )
 
         if "train_random_forest" in active_steps:
 
@@ -99,7 +108,7 @@ def go(config: DictConfig):
             ##################
 
             _ = mlflow.run(
-                os.path.join(root_path, "random_forest"),
+                    os.path.join(hydra.utils.get_original_cwd(), "src", "random_forest"),
                 "main",
                 parameters={
                     "trainval_artifact": "trainval_artifact.csv:latest",
