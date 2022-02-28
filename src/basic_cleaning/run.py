@@ -6,7 +6,7 @@ import argparse
 import logging
 import wandb
 import pandas as pd
-import os
+#import os
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
@@ -59,8 +59,8 @@ def go(args):
              )
     artifact.add_file("clean_sample.csv")
     run.log_artifact(artifact)
-    os.remove(args.output_artifact)
-    run.finish()
+    #os.remove(args.output_artifact)
+    #run.finish()
 
     
 
