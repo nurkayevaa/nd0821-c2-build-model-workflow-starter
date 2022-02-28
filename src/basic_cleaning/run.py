@@ -43,15 +43,21 @@ def go(args):
     idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
     df = df[idx].copy()
  
-    artifact.add_file(local_path='clean_sample.csv')
+    filename = "clean_sample.csv"
+    df.to_csv(filename)
 
-    # Upload the artifact to the run and tag it as reference
-    logger.info(f'Logging artifact {args.output_artifact}')
+    artifact = wandb.Artifact(
+        name=args.output_name,
+        type=args.output_type,
+        description=args.output_description,
+    )
+    artifact.add_file(filename)
+
+    logger.info("Logging artifact")
     run.log_artifact(artifact)
 
-    # Finish Run
-    os.remove(args.output_artifact)
-    run.finish()
+    os.remove(filename)
+
 
     
 
