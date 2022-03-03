@@ -42,6 +42,23 @@ def go(args):
     df['last_review'] = pd.to_datetime(df['last_review'])
     idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
     df = df[idx].copy()
+    df = df[
+        "id",
+        "name",
+        "host_id",
+        "host_name",
+        "neighbourhood_group",
+        "neighbourhood",
+        "latitude",
+        "longitude",
+        "room_type",
+        "price",
+        "minimum_nights",
+        "number_of_reviews",
+        "last_review",
+        "reviews_per_month",
+        "calculated_host_listings_count",
+        "availability_365" ]
  
     filename = "clean_sample.csv"
     df.to_csv(filename)
