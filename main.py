@@ -129,16 +129,14 @@ def go(config: DictConfig):
             # Implement here #
             ##################
 
-            _ = mlflow.run(
-                    os.path.join(hydra.utils.get_original_cwd(), "src", "train_random_forest"),
+             _ = mlflow.run(
+                f"{config['main']['components_repository']}/test_regression_model",
                 "main",
                 parameters={
-                    "mlflow_model": config["train_random_forest"]["random_forest_export:prod"],
-                    "test_artifact": config["train_random_forest"]["test_data.csv:latest],
-                  
+                    "mlflow_model": config["test_regression_model"]["mlflow_model"],
+                    "test_dataset": config['test_regression_model']['test_dataset']
                 },
             )
-
 
 
 if __name__ == "__main__":
